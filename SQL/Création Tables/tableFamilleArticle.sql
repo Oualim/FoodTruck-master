@@ -1,0 +1,20 @@
+USE [FoodTruck_otmo]
+GO
+
+/****** Object:  Table [dbo].[FamilleArticle]    Script Date: 16/10/2018 16:25:04 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[FamilleArticle](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nom] [nchar](10) NOT NULL,
+ CONSTRAINT [PK_FamilleArticle] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+

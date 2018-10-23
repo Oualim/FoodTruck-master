@@ -1,0 +1,209 @@
+﻿@using System.Globalization
+@{
+    ViewBag.Title = "OTMO - Notre carte";
+}
+<div id="choixAffichage">
+    @using (Html.BeginForm("Index", "Article",
+                new { ReturnUrl = ViewBag.ReturnUrl },
+                FormMethod.Post, new { @class = "ccform" }))
+    {
+        @Html.AntiForgeryToken()
+        <label for="strTypeRepas">Afficher les produits de notre carte pour le &nbsp;</label>
+        <select name="strTypeRepas" size="1" class="ccformfield">
+            @if (ViewBag.PdjSelected != null)
+            {
+                <option value="1" selected>petit déjeuner</option>
+            }
+            else
+            {
+                <option value="1">petit déjeuner</option>
+            }
+            @if (ViewBag.DejeunerSelected != null)
+            {
+                <option value="2" selected>déjeuner</option>
+            }
+            else
+            {
+                <option value="2">déjeuner</option>
+            }
+            @if (ViewBag.GouterSelected != null)
+            {
+                <option value="3" selected>goûter</option>
+            }
+            else
+            {
+                <option value="3">goûter</option>
+            }
+            @if (ViewBag.DinerSelected != null)
+            {
+                <option value="4" selected>diner</option>
+            }
+            else
+            {
+                <option value="4">diner</option>
+            }
+        </select>
+        <label for="strJour">&nbsp;du&nbsp;</label>
+        <select name="strJour" size="1" class="ccformfield">
+            @if (ViewBag.LundiSelected != null)
+            {
+                <option value="1" selected>lundi</option>
+            }
+            else
+            {
+                <option value="1">lundi</option>
+            }
+            @if (ViewBag.MardiSelected != null)
+            {
+                <option value="2" selected>mardi</option>
+            }
+            else
+            {
+                <option value="2">mardi</option>
+            }
+            @if (ViewBag.MercrediSelected != null)
+            {
+                <option value="3" selected>mercredi</option>
+            }
+            else
+            {
+                <option value="3">mercredi</option>
+            }
+            @if (ViewBag.JeudiSelected != null)
+            {
+                <option value="4" selected>jeudi</option>
+            }
+            else
+            {
+                <option value="4">jeudi</option>
+            }
+            @if (ViewBag.VendrediSelected != null)
+            {
+                <option value="5" selected>vendredi</option>
+            }
+            else
+            {
+                <option value="5">vendredi</option>
+            }
+            @if (ViewBag.SamediSelected != null)
+            {
+                <option value="6" selected>samedi</option>
+            }
+            else
+            {
+                <option value="6">samedi</option>
+            }
+            @if (ViewBag.DimancheSelected != null)
+            {
+                <option value="7" selected>dimanche</option>
+            }
+            else
+            {
+                <option value="7">dimanche</option>
+            }
+        </select>
+        <input class="ccbtn" type="submit" value="filtrer">
+    }
+</div>
+
+@if (ViewBag.articlesEntree.listeArticles.Count != 0)
+{
+    <h2 class="familleNotreCarte">Entrées :</h2>
+}
+
+<section class="notreCarte">
+    @foreach (var article in ViewBag.articlesEntree.listeArticles)
+    {
+        <div>
+            <a href="/Article/Details/@article.Id">
+                <img src="/Content/@article.Image" alt="@article.Nom" />
+            </a>
+            <div class="articleDescription">
+                <a href="/Article/Details/@article.Id">
+                    <p>@article.Nom</p><p>@article.Prix.ToString("C2", new CultureInfo("fr-FR"))</p>
+                </a>
+            </div>
+            <a class="ajoutPanier" href="/Panier/Ajouter/@article.Id"><p class="ajoutPanier">Ajouter au panier</p></a>
+        </div>
+    }
+</section>
+@if (ViewBag.articlesPlat.listeArticles.Count != 0)
+{
+    <h2>Plats :</h2>
+}
+<section class="notreCarte">
+    @foreach (var article in ViewBag.articlesPlat.listeArticles)
+    {
+        <div>
+            <a href="/Article/Details/@article.Id">
+                <img src="/Content/@article.Image" alt="@article.Nom" />
+            </a>
+            <div class="articleDescription">
+                <a href="/Article/Details/@article.Id">
+                    <p>@article.Nom</p><p>@article.Prix.ToString("C2", new CultureInfo("fr-FR"))</p>
+                </a>
+            </div>
+            <a class="ajoutPanier" href="/Panier/Ajouter/@article.Id"><p class="ajoutPanier">Ajouter au panier</p></a>
+        </div>
+    }
+</section>
+@if (ViewBag.articlesDessert.listeArticles.Count != 0)
+{
+    <h2>Desserts :</h2>
+}
+<section class="notreCarte">
+    @foreach (var article in ViewBag.articlesDessert.listeArticles)
+    {
+        <div>
+            <a href="/Article/Details/@article.Id">
+                <img src="/Content/@article.Image" alt="@article.Nom" />
+            </a>
+            <div class="articleDescription">
+                <a href="/Article/Details/@article.Id">
+                    <p>@article.Nom</p><p>@article.Prix.ToString("C2", new CultureInfo("fr-FR"))</p>
+                </a>
+            </div>
+            <a class="ajoutPanier" href="/Panier/Ajouter/@article.Id"><p class="ajoutPanier">Ajouter au panier</p></a>
+        </div>
+    }
+</section>
+@if (ViewBag.articlesBoissonFraiche.listeArticles.Count != 0)
+{
+    <h2>Boissons fraiches :</h2>
+}
+<section class="notreCarte">
+    @foreach (var article in ViewBag.articlesBoissonFraiche.listeArticles)
+    {
+        <div>
+            <a href="/Article/Details/@article.Id">
+                <img src="/Content/@article.Image" alt="@article.Nom" />
+            </a>
+            <div class="articleDescription">
+                <a href="/Article/Details/@article.Id">
+                    <p>@article.Nom</p><p>@article.Prix.ToString("C2", new CultureInfo("fr-FR"))</p>
+                </a>
+            </div>
+            <a class="ajoutPanier" href="/Panier/Ajouter/@article.Id"><p class="ajoutPanier">Ajouter au panier</p></a>
+        </div>
+    }
+</section>
+@if (ViewBag.articlesBoissonChaude.listeArticles.Count != 0)
+{
+    <h2>Boisson chaudes :</h2>
+}
+    <section class="notreCarte">
+        @foreach (var article in ViewBag.articlesBoissonChaude.listeArticles)
+        {
+            <div>
+                <a href="/Article/Details/@article.Id">
+                    <img src="/Content/@article.Image" alt="@article.Nom" />
+                </a>
+                <div class="articleDescription">
+                    <a href="/Article/Details/@article.Id">
+                        <p>@article.Nom</p><p>@article.Prix.ToString("C2", new CultureInfo("fr-FR"))</p>
+                    </a>
+                </div>
+                <a class="ajoutPanier" href="/Panier/Ajouter/@article.Id"><p class="ajoutPanier">Ajouter au panier</p></a>
+            </div>
+        }
+    </section>

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "OTMO - Création de votre compte";
+}
+
+<h2>Création de votre compte</h2>
+
+<h4>Créez un compte pour profiter de l'ensemble de nos services Foodtruck OTMO.</h4>
+
+@using (Html.BeginForm("Creation", "Utilisateur",
+    new { ReturnUrl = ViewBag.ReturnUrl },
+    FormMethod.Post, new { @class = "ccform connexion creationCompte" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="ccfield-prepend">
+        <span class="ccform-addon"><i class="fa fa-envelope fa-2x"></i></span>
+        <input class="ccformfield" name="Email" type="email" placeholder="Email" required>
+    </div>
+    <div class="ccfield-prepend">
+        <span class="ccform-addon"><i class="fa fa-key fa-2x"></i></span>
+        <input class="ccformfield" name="Mdp" type="password" placeholder="Mot de passe" required>
+    </div>
+    //TODO ajout deuxieme champ de password et tester égalité avec le premier
+    <div class="ccfield-prepend">
+        <span class="ccform-addon"><i class="fa fa-user fa-2x"></i></span>
+        <input class="ccformfield" name="Nom" type="text" placeholder="Nom" required>
+    </div>
+    <div class="ccfield-prepend">
+        <span class="ccform-addon"><i class="fa fa-user fa-2x"></i></span>
+        <input class="ccformfield" name="Prenom" type="text" placeholder="Prénom" required>
+    </div>
+    <div class="ccfield-prepend">
+        <span class="ccform-addon"><i class="fa fa-mobile fa-2x"></i></span>
+        <input class="ccformfield" name="Telephone" type="tel" placeholder="Téléphone" required>
+    </div>
+    <div class="ccfield-prepend">
+        <input class="ccbtn" type="submit" value="Creation">
+    </div>
+}
